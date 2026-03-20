@@ -5,307 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Five Charts Cursor Didn't Explain</title>
 <meta name="description" content="What CursorBench quietly reveals about the future of coding agent evaluation. By Han HELOIR YAN, Ph.D.">
-<meta property="og:title" content="Five Charts Cursor Didn't Explain">
-<meta property="og:description" content="What CursorBench quietly reveals about the future of coding agent evaluation.">
-<meta property="og:type" content="article">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --dark: #141413;
-  --light: #faf9f5;
-  --mid-gray: #b0aea5;
-  --light-gray: #e8e6dc;
-  --orange: #d97757;
-  --blue: #6a9bcc;
-  --green: #788c5d;
-  --dark-soft: #2d2d2a;
-  --dark-muted: #5c5b55;
-  --dark-faint: #8a8880;
-  --orange-soft: #faf0eb;
-  --orange-mid: #ecc4b3;
-  --blue-soft: #eef4f9;
-  --blue-mid: #b8d4e8;
-  --green-soft: #f0f3ec;
-  --green-mid: #c0ccae;
-  --warm-bg: #f2f1ed;
-  --border: #e0ded6;
-  --border-soft: #eae8e2;
-  --red: #b54a3a;
-  --red-soft: #f9efed;
-  --red-mid: #dba49a;
-  --amber: #b8923e;
-  --amber-soft: #f9f3e6;
-  --amber-mid: #dfc88e;
-  --shadow-sm: 0 1px 3px rgba(20,20,19,0.04), 0 1px 2px rgba(20,20,19,0.03);
-  --shadow-md: 0 4px 14px rgba(20,20,19,0.06), 0 1px 4px rgba(20,20,19,0.03);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: var(--warm-bg);
-  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
-  color: var(--dark);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Article layout */
-.article {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 64px 24px 80px;
-}
-
-/* Title block */
-.article-header {
-  margin-bottom: 48px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid var(--light-gray);
-}
-.article-title {
-  font-size: 38px;
-  font-weight: 700;
-  line-height: 1.15;
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
-}
-.article-subtitle {
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--dark-muted);
-  line-height: 1.4;
-  margin-bottom: 20px;
-}
-.article-meta {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--dark-faint);
-}
-
-/* Body text */
-.article p {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.75;
-  margin-bottom: 20px;
-  color: var(--dark-soft);
-}
-.article strong {
-  font-weight: 600;
-  color: var(--dark);
-}
-
-/* Section headers */
-.article h2 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-top: 56px;
-  margin-bottom: 20px;
-  color: var(--dark);
-  letter-spacing: -0.3px;
-}
-
-/* Separator */
-.section-break {
-  border: none;
-  border-top: 1px solid var(--light-gray);
-  margin: 48px 0;
-}
-
-/* CTA block */
-.cta-block {
-  background: var(--light);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 16px 20px;
-  margin-bottom: 40px;
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--dark-muted);
-}
-
-/* Cursor chart reference */
-.cursor-chart-ref {
-  background: var(--light);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  box-shadow: var(--shadow-md);
-  margin: 32px 0;
-  overflow: hidden;
-}
-.cursor-chart-ref img {
-  width: 100%;
-  display: block;
-}
-.cursor-chart-ref-caption {
-  padding: 12px 16px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--dark-faint);
-  border-top: 1px solid var(--border-soft);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.cursor-chart-ref-caption a {
-  color: var(--blue);
-  text-decoration: none;
-  border-bottom: 1px solid var(--blue-mid);
-}
-.cursor-chart-ref-caption a:hover {
-  color: var(--orange);
-  border-color: var(--orange-mid);
-}
-
-/* Diagram cards */
-.diagram-container {
-  margin: 32px -24px;
-  padding: 0 24px;
-}
-.card {
-  background: var(--light);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  box-shadow: var(--shadow-md);
-  padding: 40px 36px 28px;
-  position: relative;
-}
-.card-number {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--mid-gray);
-}
-.card-title {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--dark);
-  line-height: 1.2;
-  margin-bottom: 6px;
-}
-.card-sub {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--dark-muted);
-  line-height: 1.45;
-  margin-bottom: 24px;
-}
-.card-body { margin-top: 24px; }
-.attribution {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--mid-gray);
-  text-align: right;
-  margin-top: 24px;
-}
-.callout {
-  border-radius: 6px;
-  padding: 11px 16px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.45;
-  text-align: center;
-  margin-top: 24px;
-}
-.callout-orange { background: var(--orange-soft); color: var(--orange); border: 1px solid var(--orange-mid); }
-.callout-blue { background: var(--blue-soft); color: var(--blue); border: 1px solid var(--blue-mid); }
-.callout-green { background: var(--green-soft); color: var(--green); border: 1px solid var(--green-mid); }
-.callout-neutral { background: var(--light); color: var(--dark-soft); border: 1px solid var(--border); }
-
-/* Credits */
-.credits {
-  margin-top: 56px;
-  padding-top: 32px;
-  border-top: 1px solid var(--light-gray);
-}
-.credits h2 {
-  font-size: 18px;
-  margin-top: 0;
-  margin-bottom: 16px;
-}
-.credits ul {
-  list-style: none;
-  padding: 0;
-}
-.credits li {
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--dark-muted);
-  padding: 6px 0;
-  border-bottom: 1px solid var(--border-soft);
-}
-.credits li a {
-  color: var(--blue);
-  text-decoration: none;
-}
-
-/* Footer */
-.article-footer {
-  margin-top: 48px;
-  padding-top: 24px;
-  border-top: 1px solid var(--light-gray);
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
-  color: var(--dark-faint);
-  text-align: center;
-}
-
-@media (max-width: 600px) {
-  .article { padding: 32px 16px 48px; }
-  .article-title { font-size: 28px; }
-  .article-subtitle { font-size: 17px; }
-  .article p { font-size: 16px; }
-  .article h2 { font-size: 22px; }
-  .card { padding: 28px 20px 22px; }
-  .diagram-container { margin: 24px -16px; padding: 0 16px; }
-}
+body { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; font-family: Georgia, serif; color: #1a1a1a; line-height: 1.75; background: #fff; }
+h1 { font-size: 36px; font-weight: 700; line-height: 1.15; margin-bottom: 10px; font-family: sans-serif; }
+.subtitle { font-size: 20px; color: #666; margin-bottom: 24px; line-height: 1.4; }
+.meta { font-size: 14px; color: #999; margin-bottom: 40px; }
+h2 { font-size: 26px; font-weight: 700; margin-top: 48px; margin-bottom: 16px; font-family: sans-serif; }
+p { font-size: 18px; margin-bottom: 20px; }
+strong { font-weight: 700; }
+hr { border: none; border-top: 1px solid #eee; margin: 40px 0; }
+img { max-width: 100%; height: auto; display: block; margin: 24px auto; }
+figcaption { font-size: 13px; color: #999; text-align: center; margin-top: 4px; margin-bottom: 24px; }
+a { color: #6a9bcc; }
+.cta { background: #f9f9f7; border: 1px solid #eee; padding: 14px 18px; margin-bottom: 32px; font-size: 15px; color: #666; }
+.credits { margin-top: 48px; padding-top: 24px; border-top: 1px solid #eee; }
+.credits h2 { font-size: 18px; margin-top: 0; }
+.credits ul { list-style: none; padding: 0; }
+.credits li { font-size: 14px; padding: 6px 0; border-bottom: 1px solid #f0f0f0; color: #666; }
+.footer { margin-top: 40px; text-align: center; font-size: 13px; color: #999; }
 </style>
 </head>
 <body>
 
-<article class="article">
+<h1>Five Charts Cursor Didn't Explain</h1>
+<div class="subtitle">What CursorBench Quietly Reveals About the Future of Coding Agent Evaluation</div>
+<div class="meta">Han HELOIR YAN, Ph.D. · March 2026</div>
 
-<!-- HEADER -->
-<header class="article-header">
-  <h1 class="article-title">Five Charts Cursor Didn't Explain</h1>
-  <div class="article-subtitle">What CursorBench Quietly Reveals About the Future of Coding Agent Evaluation</div>
-  <div class="article-meta">Han HELOIR YAN, Ph.D. · March 2026</div>
-</header>
+<div class="cta">If this changes how you read benchmark claims, a clap helps ✍️ · Follow for more on AI infrastructure and developer tooling</div>
 
-<!-- CTA -->
-<div class="cta-block">
-  If this changes how you read benchmark claims, a clap helps ✍️ · Follow for more on AI infrastructure and developer tooling
-</div>
-
-<!-- INTRO -->
 <p>On March 11, 2026, Cursor published a blog post titled "How we compare model quality in Cursor." It was understated. No dramatic claims. No shots fired at competitors. Just five charts and a calm explanation of their internal eval process.</p>
 
 <p>The AI community mostly filed it under "company talks about their benchmark." That was a mistake. Those five charts, read carefully, expose five assumptions baked into every public coding benchmark that nobody is questioning. Each assumption, once you see it, cannot be unseen.</p>
 
 <p>Here is what Cursor showed. And here is what they did not say out loud.</p>
 
-<hr class="section-break">
+<hr>
 
-<!-- CHART 1 -->
 <h2>Chart 1: The Scatter Plot Nobody Else Publishes</h2>
 
 <p>The first chart in Cursor's post plots CursorBench correctness scores against median completion tokens per model. A scatter plot. Simple enough.</p>
 
-<div class="cursor-chart-ref">
-  <img src="https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fcursorbench-scatter-r13.png&w=1920&q=70" alt="CursorBench scatter plot: correctness vs completion tokens">
-  <div class="cursor-chart-ref-caption">
-    <span>Source: Cursor, "How we compare model quality in Cursor" (Mar 2026)</span>
-    <a href="https://cursor.com/blog/cursorbench" target="_blank">View original</a>
-  </div>
-</div>
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/cursor-chart-1.png" alt="CursorBench scatter plot: correctness vs completion tokens">
+<figcaption>Source: <a href="https://cursor.com/blog/cursorbench">Cursor blog</a>, first chart</figcaption>
+</figure>
 
 <p>Except no public coding benchmark publishes this view. Not SWE-bench. Not Terminal-Bench. Not Aider Polyglot. Every public leaderboard ranks models on a single axis: what percentage of tasks did the model solve? The implicit assumption is that solve rate is the metric that matters.</p>
 
@@ -315,43 +58,23 @@ body {
 
 <p>Public benchmarks hide this. They report the percentage and discard the path. SWE-bench does not care whether the model solved the task in 500 tokens or 50,000. As a result, the industry optimizes for solve rate, and models become increasingly verbose to capture marginal improvements. Reasoning models are the extreme case: they solve more tasks, but they "think" for thousands of tokens to get there, and the developer feels every one of those tokens as latency.</p>
 
-<!-- Diagram 1 -->
-<div class="diagram-container">
-  <div class="card">
-    <div class="card-number">01 / 05</div>
-    <div class="card-title">The Missing Axis</div>
-    <div class="card-sub">Public benchmarks rank on one axis: solve rate. Cursor added a second: token cost. The combination reveals a Pareto frontier that changes which model you should actually pick.</div>
-    <div class="card-body">
-      <div style="display: flex; gap: 12px; margin-top: 8px;">
-        <div style="flex: 1; background: var(--green-soft); border: 1px solid var(--green-mid); border-radius: 6px; padding: 12px;">
-          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 4px;">Leaderboard says:</div>
-          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--dark-soft);">Model B wins (77% vs 72%)</div>
-        </div>
-        <div style="flex: 1; background: var(--orange-soft); border: 1px solid var(--orange-mid); border-radius: 6px; padding: 12px;">
-          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 4px;">Pareto frontier says:</div>
-          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--dark-soft);">Model A is the better product for 90% of tasks (72% at 1/5 the cost and latency)</div>
-        </div>
-      </div>
-    </div>
-    <div class="callout callout-orange">Every public leaderboard is a 1D projection of a 2D decision. Cursor publishes the full surface. Nobody else does.</div>
-    <div class="attribution">Created by Han HELOIR YAN</div>
-  </div>
-</div>
+<p>Cursor's scatter plot reveals the Pareto frontier: the set of models where you cannot improve correctness without spending more tokens, or reduce tokens without losing correctness. That frontier is the actual decision surface for product teams. Everything below and to the left of it is dominated. Everything on it represents a real trade-off. If your current eval does not show you this frontier, you are making model selection decisions with one eye closed.</p>
 
-<hr class="section-break">
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/diagram-01.png" alt="The Missing Axis: Pareto frontier diagram">
+<figcaption>Image by Author</figcaption>
+</figure>
 
-<!-- CHART 2 -->
+<hr>
+
 <h2>Chart 2: The Benchmark That Gets Harder</h2>
 
 <p>The second chart shows the distribution of edit sizes (lines of code in the gold patch) across three CursorBench versions. The distribution shifts right from v1 to v3. Problem scope has roughly doubled.</p>
 
-<div class="cursor-chart-ref">
-  <img src="https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fcursorbench-edit-distribution-r7.png&w=1920&q=70" alt="CursorBench edit size distribution across versions">
-  <div class="cursor-chart-ref-caption">
-    <span>Source: Cursor, "Building CursorBench" section</span>
-    <a href="https://cursor.com/blog/cursorbench#building-cursorbench" target="_blank">View original</a>
-  </div>
-</div>
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/cursor-chart-2.png" alt="CursorBench edit size distribution across versions">
+<figcaption>Source: <a href="https://cursor.com/blog/cursorbench#building-cursorbench">Cursor blog</a>, "Building CursorBench" section</figcaption>
+</figure>
 
 <p>On the surface, this looks like a methodology note. "We made the benchmark harder." But the implication is more interesting than that.</p>
 
@@ -363,20 +86,21 @@ body {
 
 <p>This matters because the task distribution is the most important variable in any benchmark, and it is the one most benchmarks treat as fixed. If the distribution of real work shifts (toward longer tasks, more files, more ambiguity) and the benchmark does not shift with it, the benchmark's relevance decays silently. You keep getting scores. The scores stop meaning anything.</p>
 
-<hr class="section-break">
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/diagram-02.png" alt="The Co-Evolving Benchmark diagram">
+<figcaption>Image by Author</figcaption>
+</figure>
 
-<!-- CHART 3 -->
+<hr>
+
 <h2>Chart 3: The Inverted Information Density</h2>
 
 <p>The third chart is a two-panel comparison. Left panel: gold patch lines of code (how much code the solution requires). Right panel: task description length (how much text describes the problem). CursorBench is compared against SWE-bench Verified, Pro, and Multilingual.</p>
 
-<div class="cursor-chart-ref">
-  <img src="https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fcursorbench-tasks-r6.png&w=1920&q=70" alt="CursorBench vs public benchmark task characteristics">
-  <div class="cursor-chart-ref-caption">
-    <span>Source: Cursor, "Building CursorBench" section (second chart)</span>
-    <a href="https://cursor.com/blog/cursorbench#building-cursorbench" target="_blank">View original</a>
-  </div>
-</div>
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/cursor-chart-3.png" alt="CursorBench vs public benchmark task characteristics">
+<figcaption>Source: <a href="https://cursor.com/blog/cursorbench#building-cursorbench">Cursor blog</a>, "Building CursorBench" section, second chart</figcaption>
+</figure>
 
 <p>This is the most revealing chart in the entire post, and Cursor barely comments on it.</p>
 
@@ -390,74 +114,25 @@ body {
 
 <p>These are fundamentally different cognitive tasks. And they activate different model capabilities. A model that excels at parsing detailed instructions may fail at resolving ambiguous intent. A model that infers intent well may be sloppy when given precise specifications.</p>
 
-<!-- Diagram 3 -->
-<div class="diagram-container">
-  <div class="card">
-    <div class="card-number">03 / 05</div>
-    <div class="card-title">The Inverted Information Density</div>
-    <div class="card-sub">Public benchmarks: long descriptions, short solutions (instruction-following). CursorBench: short descriptions, long solutions (intent inference).</div>
-    <div class="card-body">
-      <div style="display: flex; gap: 20px;">
-        <div style="flex: 1;">
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: var(--red); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">SWE-bench / Public</div>
-          <div style="margin-bottom: 6px;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--dark-faint); margin-bottom: 3px;">Task description</div>
-            <div style="height: 24px; background: var(--red); opacity: 0.25; border-radius: 3px; width: 95%;"></div>
-          </div>
-          <div style="margin-bottom: 16px;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--dark-faint); margin-bottom: 3px;">Gold patch (LOC)</div>
-            <div style="height: 24px; background: var(--red); opacity: 0.5; border-radius: 3px; width: 25%;"></div>
-          </div>
-          <div style="background: var(--red-soft); border: 1px solid var(--red-mid); border-radius: 6px; padding: 12px; text-align: center;">
-            <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--red);">Instruction-following</div>
-            <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--dark-soft); margin-top: 4px;">"Parse detailed spec. Produce targeted fix."</div>
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 0 4px;">
-          <div style="width: 1.5px; flex: 1; background: var(--light-gray);"></div>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 600; color: var(--mid-gray);">vs</div>
-          <div style="width: 1.5px; flex: 1; background: var(--light-gray);"></div>
-        </div>
-        <div style="flex: 1;">
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: var(--green); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">CursorBench</div>
-          <div style="margin-bottom: 6px;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--dark-faint); margin-bottom: 3px;">Task description</div>
-            <div style="height: 24px; background: var(--green); opacity: 0.25; border-radius: 3px; width: 20%;"></div>
-          </div>
-          <div style="margin-bottom: 16px;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--dark-faint); margin-bottom: 3px;">Gold patch (LOC)</div>
-            <div style="height: 24px; background: var(--green); opacity: 0.5; border-radius: 3px; width: 90%;"></div>
-          </div>
-          <div style="background: var(--green-soft); border: 1px solid var(--green-mid); border-radius: 6px; padding: 12px; text-align: center;">
-            <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--green);">Intent inference</div>
-            <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--dark-soft); margin-top: 4px;">"Figure out what I mean. Produce substantial code."</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="callout callout-green">This is why CursorBench separates models where public benchmarks cannot. They test different cognitive tasks. Small models follow instructions well. Frontier models infer intent well. Public benchmarks only test the first skill.</div>
-    <div class="attribution">Created by Han HELOIR YAN</div>
-  </div>
-</div>
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/diagram-03.png" alt="The Inverted Information Density diagram">
+<figcaption>Image by Author</figcaption>
+</figure>
 
 <p>Public benchmarks test instruction-following. CursorBench tests intent inference. When Cursor reports that their benchmark separates models where public benchmarks cannot, this is why. The models are not being tested on the same skill. The small models that score well on SWE-bench are good at following instructions. They are not good at figuring out what you meant. The frontier models that barely edge ahead on SWE-bench are much better at intent inference, but the benchmark cannot see it because it never asks them to infer intent.</p>
 
 <p>161 of SWE-bench Verified's 500 tasks require only one to two lines of code change. On CursorBench-3, the median solution is substantially larger and spans multiple files. You are not measuring the same thing. You were never measuring the same thing.</p>
 
-<hr class="section-break">
+<hr>
 
-<!-- CHART 4 -->
 <h2>Chart 4: Separation as a Diagnostic</h2>
 
 <p>The fourth chart shows model separation: the score spread between models on CursorBench versus public benchmarks. CursorBench produces more separation at the frontier.</p>
 
-<div class="cursor-chart-ref">
-  <img src="https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fcursorbench-separation-r6.png&w=1920&q=70" alt="CursorBench model separation vs public benchmarks">
-  <div class="cursor-chart-ref-caption">
-    <span>Source: Cursor, "CursorBench shows more separation" section</span>
-    <a href="https://cursor.com/blog/cursorbench#cursorbench-shows-more-separation-between-models" target="_blank">View original</a>
-  </div>
-</div>
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/cursor-chart-4.png" alt="CursorBench model separation vs public benchmarks">
+<figcaption>Source: <a href="https://cursor.com/blog/cursorbench#cursorbench-shows-more-separation-between-models">Cursor blog</a>, "CursorBench shows more separation" section</figcaption>
+</figure>
 
 <p>Most people read this as "CursorBench is harder, so scores are lower and more spread out." That is true but not interesting. The interesting reading is a diagnostic one.</p>
 
@@ -471,20 +146,21 @@ body {
 
 <p>If you are evaluating models below the frontier, public benchmarks still work. If you are choosing between the top five models for a production coding agent, they do not.</p>
 
-<hr class="section-break">
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/diagram-04.png" alt="Separation as a Diagnostic diagram">
+<figcaption>Image by Author</figcaption>
+</figure>
 
-<!-- CHART 5 -->
+<hr>
+
 <h2>Chart 5: The Construct Validity Test Nobody Runs</h2>
 
 <p>The fifth chart shows that CursorBench rankings align more closely with online evaluation metrics than public benchmark rankings do.</p>
 
-<div class="cursor-chart-ref">
-  <img src="https://cursor.com/marketing-static/_next/image?url=https%3A%2F%2Fptht05hbb1ssoooe.public.blob.vercel-storage.com%2Fassets%2Fblog%2Fcursorbench-alignment-r5.png&w=1920&q=70" alt="CursorBench alignment with online evaluation metrics">
-  <div class="cursor-chart-ref-caption">
-    <span>Source: Cursor, "CursorBench scores align with online evals" section</span>
-    <a href="https://cursor.com/blog/cursorbench#cursorbench-scores-align-with-online-evals" target="_blank">View original</a>
-  </div>
-</div>
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/cursor-chart-5.png" alt="CursorBench alignment with online evaluation metrics">
+<figcaption>Source: <a href="https://cursor.com/blog/cursorbench#cursorbench-scores-align-with-online-evals">Cursor blog</a>, "CursorBench scores align with online evals" section</figcaption>
+</figure>
 
 <p>This is the most important chart in the post and the one that got the least attention.</p>
 
@@ -494,38 +170,10 @@ body {
 
 <p>This is the chart that should make every benchmark maintainer uncomfortable. It is not enough to build a hard test with clean data and careful grading. If your test's rankings do not predict how users experience the models in production, you are measuring something, but it is not what you think it is.</p>
 
-<!-- Diagram 5 -->
-<div class="diagram-container">
-  <div class="card">
-    <div class="card-number">05 / 05</div>
-    <div class="card-title">The Construct Validity Gap</div>
-    <div class="card-sub">Does your benchmark actually predict how developers experience model quality?</div>
-    <div class="card-body">
-      <div style="display: flex; gap: 16px;">
-        <div style="flex: 1; background: var(--red-soft); border: 1px solid var(--red-mid); border-radius: 6px; padding: 16px;">
-          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px;">Public Benchmarks</div>
-          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--dark-soft); line-height: 1.45;">No published evidence that rankings predict real-world usefulness. No product. No users. No way to check.</div>
-        </div>
-        <div style="flex: 1; background: var(--green-soft); border: 1px solid var(--green-mid); border-radius: 6px; padding: 16px;">
-          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 8px;">CursorBench</div>
-          <div style="font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--dark-soft); line-height: 1.45;">Published correlation between offline rankings and online evaluation metrics. Rankings predict how developers actually experience model quality in the product.</div>
-        </div>
-      </div>
-      <div style="background: var(--light); border: 1px solid var(--border); border-radius: 6px; padding: 16px; margin-top: 16px;">
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; color: var(--dark-faint); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px;">Why nobody else can do this</div>
-        <div style="display: flex; gap: 10px; text-align: center;">
-          <div style="flex: 1;"><div style="font-size: 13px; font-weight: 500; color: var(--dark-soft);">Requires offline benchmark</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--mid-gray);">Everyone has this</div></div>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--mid-gray); display: flex; align-items: center;">+</div>
-          <div style="flex: 1;"><div style="font-size: 13px; font-weight: 500; color: var(--dark-soft);">Requires production product</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--mid-gray);">Benchmark maintainers don't</div></div>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 16px; color: var(--mid-gray); display: flex; align-items: center;">+</div>
-          <div style="flex: 1;"><div style="font-size: 13px; font-weight: 500; color: var(--dark-soft);">Requires online metrics</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--mid-gray);">Only product teams have these</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="callout callout-green">The eval gap is not a research problem. It is a product infrastructure problem. You need users to know if your benchmark means anything.</div>
-    <div class="attribution">Created by Han HELOIR YAN</div>
-  </div>
-</div>
+<figure>
+<img src="https://raw.githubusercontent.com/cozypet/cursorbench-analysis/main/images/diagram-05.png" alt="The Construct Validity Gap diagram">
+<figcaption>Image by Author</figcaption>
+</figure>
 
 <p>No public benchmark publishes construct validity evidence. None of them show a correlation between their rankings and any downstream measure of real-world usefulness. These benchmarks assume their scores are meaningful. Cursor is the first team to show receipts.</p>
 
@@ -533,31 +181,24 @@ body {
 
 <p>This is why the eval gap is not just a research problem. It is a product infrastructure problem. The teams that can close the loop between offline scores and online outcomes will make better product decisions. The teams that cannot will keep optimizing for benchmarks that do not predict developer experience.</p>
 
-<hr class="section-break">
+<hr>
 
-<!-- CLOSING -->
 <p>Cursor published five charts. They positioned them as a methodology explanation. Read differently, they are a five-part argument that the entire public coding benchmark ecosystem is measuring the wrong things: single-axis leaderboards instead of efficiency frontiers, frozen task distributions instead of co-evolving ones, instruction-following instead of intent inference, undifferentiated scores instead of discriminative rankings, and assumed validity instead of demonstrated validity.</p>
 
 <p>No other team has published evidence on any of these five dimensions. That is either because nobody else has thought about it, or because nobody else has the infrastructure to measure it. Either way, the gap is real.</p>
 
-<!-- CREDITS -->
 <div class="credits">
   <h2>Credits & Further Reading</h2>
   <ul>
-    <li><a href="https://cursor.com/blog/cursorbench" target="_blank">Cursor, "How we compare model quality in Cursor"</a> (Mar 2026)</li>
-    <li><a href="https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/" target="_blank">OpenAI, "Why we no longer evaluate SWE-bench Verified"</a> (Feb 2026)</li>
-    <li><a href="https://scale.com/blog/swe-bench-pro" target="_blank">Scale AI, "SWE-bench Pro: Raising the Bar for Agentic Coding"</a> (Sep 2025)</li>
-    <li><a href="https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/" target="_blank">METR, "Many SWE-bench-Passing PRs Would Not Be Merged into Main"</a> (Mar 2026)</li>
-    <li><a href="https://arxiv.org/abs/2502.06215" target="_blank">LessLeak-Bench, "Data Leakage in LLMs Across 83 SE Benchmarks"</a> (Feb 2025)</li>
+    <li><a href="https://cursor.com/blog/cursorbench">Cursor, "How we compare model quality in Cursor"</a> (Mar 2026)</li>
+    <li><a href="https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/">OpenAI, "Why we no longer evaluate SWE-bench Verified"</a> (Feb 2026)</li>
+    <li><a href="https://scale.com/blog/swe-bench-pro">Scale AI, "SWE-bench Pro"</a> (Sep 2025)</li>
+    <li><a href="https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/">METR, "Many SWE-bench-Passing PRs Would Not Be Merged"</a> (Mar 2026)</li>
+    <li><a href="https://arxiv.org/abs/2502.06215">LessLeak-Bench, "Data Leakage in LLMs Across 83 SE Benchmarks"</a> (Feb 2025)</li>
   </ul>
 </div>
 
-<!-- FOOTER -->
-<div class="article-footer">
-  Han HELOIR YAN, Ph.D. · 2026
-</div>
-
-</article>
+<div class="footer">Han HELOIR YAN, Ph.D. · 2026</div>
 
 </body>
 </html>
